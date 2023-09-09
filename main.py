@@ -2,16 +2,16 @@ import pandas as pd
 import glob
 import fpdf
 
-files = glob.glob('*.xlsx')
+files = glob.glob('Excel_orders/*.xlsx')
 
-inv_nbr = files[0][:5]
-inv_date = files[0][6:15]
+inv_nbr = files[0][13:18]
+inv_date = files[0][19:28]
 pdf = fpdf.FPDF(orientation='P', unit='mm', format='A4')
 pdf.add_page()
 
 # Header
 pdf.set_font('Times', style='B', size=18)
-pdf.cell(w=0, h=12, txt=f"Invoice n°{inv_nbr}", align='L', ln=1)
+pdf.cell(w=0, h=12, txt=f"Invoice n° {inv_nbr}", align='L', ln=1)
 pdf.cell(w=0, h=10, txt=f"Date {inv_date}", align='L', ln=1)
 pdf.ln(10)
 
@@ -53,4 +53,4 @@ pdf.ln(20)
 pdf.set_font('Times', style='B', size=13)
 pdf.cell(w=0, h=12, txt=f"The total due amount is {total_invoice} euros.", align='L')
 
-pdf.output('Invoice.pdf')
+pdf.output(f"PDF_Invoices/Invoice_{files[0][13:28]}.pdf")
