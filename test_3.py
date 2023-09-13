@@ -33,11 +33,12 @@ for filepath in filepaths:
                 max_widths[index_2] = width
 
     # Table header
-    for col_name, max_width in zip(df.columns, max_widths):
-        col_name_formatted = (col_name.replace('_purchased', '')
-                              .replace('_', ' ').title())
-        pdf.set_font('Times', style='B', size=12)
-        pdf.cell(w=max_width + 8, h=10, txt=str(col_name_formatted), border=1)
+    pdf.set_font('Times', style='B', size=12)
+    pdf.cell(w=max_widths[0] + 8, h=8, txt=df.columns[0], border=1)
+    pdf.cell(w=max_widths[1] + 8, h=8, txt=df.columns[1], border=1)
+    pdf.cell(w=max_widths[2] + 8, h=8, txt=df.columns[2], border=1)
+    pdf.cell(w=max_widths[3] + 8, h=8, txt=df.columns[3], border=1)
+    pdf.cell(w=max_widths[4] + 8, h=8, txt=df.columns[4], border=1)
     pdf.ln()
 
     # Table rows
