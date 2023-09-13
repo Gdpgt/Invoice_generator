@@ -60,6 +60,10 @@ for filepath in filepaths:
     # Total sentence
     pdf.set_font('Times', style='B', size=13)
     pdf.cell(w=0, h=12, txt=f"The total due amount is {total_invoice} euros.",
-             align='L')
+             align='L', ln=1)
+
+    # Company name and logo
+    pdf.cell(w=45, h=12, txt='The Smiley Company', align='L')
+    pdf.image('Company_logo.png', w=10)
 
     pdf.output(f"PDF_Invoices/Invoice_{filename}.pdf")
